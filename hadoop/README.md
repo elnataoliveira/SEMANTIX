@@ -16,9 +16,7 @@ hdfs dfs -tail 1 /user/aluno/elnataoliveira/data/alunos.csv
 hdfs dfs -mv /user/aluno/elnataoliveira/entrada1.txt /user/aluno/elnataoliveira/data/recovery
 hdfs dfs -mv /user/aluno/elnataoliveira/data/entrada1.txt /user/aluno/elnataoliveira/recover
 hdfs dfs -ls -R /user/
-hdfs dfs -fird /user -name alunos.csv
 hdfs dfs -find /user -name alunos.csv
-hdfs dfs -tail 1 /user/aluno/elnataoliveira/data/alunos.csv
 hdfs dfs -tail /user/aluno/elnataoliveira/data/alunos.csv
 hdfs dfs -cat /user/aluno/elnataoliveira/data/alunos.csv
 hdfs dfs -cat /user/aluno/elnataoliveira/data/alunos.csv | head -n 2
