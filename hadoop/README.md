@@ -8,7 +8,7 @@ hdfs dfs -ls -R /user/
 hdfs dfs -put /input/exercises-data/entrada1.txt /user/aluno/elnataoliveira/data
 hdfs dfs -ls -R /user/
 hdfs dfs -ls -R /
- hdfs dfs -put /input/exercises-data/escola/alunos.csv /user/aluno/elnataoliveira/data
+hdfs dfs -put /input/exercises-data/escola/alunos.csv /user/aluno/elnataoliveira/data
 hdfs dfs -ls -R /user/
 hdfs dfs -tail /user/aluno/elnataoliveira/alunos.csv
 hdfs dfs -tail /user/aluno/elnataoliveira/data/alunos.csv
