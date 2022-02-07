@@ -1,5 +1,6 @@
 ### basic commands hadoop
 
-´´´ sh
+``` sh
+
 echo "teste"
-´´´
+```
