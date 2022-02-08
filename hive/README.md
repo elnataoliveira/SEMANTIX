@@ -6,7 +6,7 @@ ls /input/exercises-data/populacaoLA/
 hdfs dfs -mkdir /user/aluno/elnataoliveira/data/populacao
 hdfs dfs -put /input/exercises-data/populacaoLA/populacaoLA.csv /user/aluno/elnataoliveira/data/populacao
 hdfs dfs -ls /user/aluno/elnataoliveira/data/populacao
-hdfs dfs -cat /input/exercises-data/populacaoLA/populacaoLA.csv | head -n 3
+hdfs dfs -cat /user/aluno/elnataoliveira/data/populacao/populacaoLA.csv | head -n 3
 
 ```
 
@@ -37,4 +37,9 @@ create table pop(
   desc pop;
   desc formatted pop;
   
+```
+### insert data on hive database
+
+``` sh
+
 ```
