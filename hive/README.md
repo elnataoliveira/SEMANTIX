@@ -41,5 +41,14 @@ create table pop(
 ### insert data on hive database
 
 ``` sh
+docker exec -it hive-server bash
+beeline -u jdbc:hive2://localhost:10000
+show databases;
+use elnataoliveira;
+show tables;
+desc formatted pop;
+load data inpath '/user/aluno/elnataoliveira/data/populacao' overwrite into table pop;
+select * from pop limit 10;
+select count(*) from pop;
 
 ```
