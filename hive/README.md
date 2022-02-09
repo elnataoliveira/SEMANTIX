@@ -63,8 +63,8 @@ alter table logs add partition(data='2019-21-02');
 docker exec -it namenode hdfs dfs -mkdir /user/aluno/elnataoliveira/data/nascimento
 docker exec -it namenode hdfs dfs -ls /user
 
-docker exec -it hive bash
-acessar o beeline
+docker exec -it hive-server bash
+beeline -u jdbc:hive2://localhost:10000
 
 
 create external table nascimento(
@@ -85,14 +85,21 @@ alter table nascimento add partition(ano=2015);
 docker exec -it namenode hdfs -ls /user/aluno/elnataoliveira/nascimento
 docker exec -it namenode hdfs dfs -put input/exercises-data/names/yob2015.txt /user/aluno/elnataoliveira/data/nascimento/ano=2015
 
-acessar o beeline
- select * from nascimento;
+docker exec -it hive-server bash
+beeline -u jdbc:hive2://localhost:10000
+select * from nascimento;
  
- alter table nascimento add partition(ano=2016);
- alter table nascimento add partition(ano=2017);
+alter table nascimento add partition(ano=2016);
+alter table nascimento add partition(ano=2017);
  
 docker exec -it namenode hdfs dfs -put input/exercises-data/names/yob2016.txt /user/aluno/elnataoliveira/data/nascimento/ano=2016
 docker exec -it namenode hdfs dfs -put input/exercises-data/names/yob2017.txt /user/aluno/elnataoliveira/data/nascimento/ano=2017
 docker exec -it namenode hdfs -ls /user/aluno/elnataoliveira/nascimento
+
+docker exec -it hive-server bash
+beeline -u jdbc:hive2://localhost:10000
+select * from nascimento where ano = 2015 limit 10;
+select * from nascimento where ano = 2017 limit 10;
+select * from nascimento where ano = 2017 limit 10;
 
 ```
