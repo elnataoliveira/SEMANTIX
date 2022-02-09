@@ -77,7 +77,7 @@ create external table nascimento(
   fields terminated by ','
   lines terminated by '\n'
   stored as textfile
-  location '/user/aluno/data/nascimento';
+  location '/user/aluno/elnataoliveira/data/nascimento';
   
 
 alter table nascimento add partition(ano=2015);
