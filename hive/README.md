@@ -52,3 +52,34 @@ select * from pop limit 10;
 select count(*) from pop;
 
 ```
+
+``` sh
+msck repair table <nomeTable>
+
+alter table <nameTable> add partition(<partition>='<valor>');
+
+alter table logs add partition(data='2019-21-02');
+
+docker exec -it namenode hdfs dfs -mkdir /user/aluno/elnataoliveira/data/nascimento
+docker exec -it namenode hdfs dfs -ls /user
+
+docker exec -it hive bash
+acessar o beeline
+
+
+create external table nascimento(
+  nome string,
+  sexo string,
+  frequencia int
+)
+  partitioned by (ano int)
+  row format delimited
+  fields terminated by ','
+  lines terminated by '\n'
+  stored as textfile
+  location '/user/aluno/data/nascimento';
+  
+
+alter table nascimento add partition(ano=2015);
+
+```
