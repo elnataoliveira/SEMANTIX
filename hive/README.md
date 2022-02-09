@@ -82,4 +82,9 @@ create external table nascimento(
 
 alter table nascimento add partition(ano=2015);
 
+docker exec -it namenode hdfs -ls /user/aluno/elnataoliveira/nascimento
+docker exec -it namenode hdfs dfs -put input/exercises-data/names/yob2015.txt /user/aluno/elnataoliveira/data/nascimento/ano=2015
+
+acessar o beeline
+ select * from nascimento;
 ```
