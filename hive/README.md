@@ -87,4 +87,12 @@ docker exec -it namenode hdfs dfs -put input/exercises-data/names/yob2015.txt /u
 
 acessar o beeline
  select * from nascimento;
+ 
+ alter table nascimento add partition(ano=2016);
+ alter table nascimento add partition(ano=2017);
+ 
+docker exec -it namenode hdfs dfs -put input/exercises-data/names/yob2016.txt /user/aluno/elnataoliveira/data/nascimento/ano=2016
+docker exec -it namenode hdfs dfs -put input/exercises-data/names/yob2017.txt /user/aluno/elnataoliveira/data/nascimento/ano=2017
+docker exec -it namenode hdfs -ls /user/aluno/elnataoliveira/nascimento
+
 ```
