@@ -89,7 +89,9 @@ hdfs dfs -tail /user/hive/warehouse/db_test2_5/titles/05853b9f-cd69-4352-b548-7d
 
 sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true --table cp_titles_date --connect jdbc:mysql://database/employees --username root --password secret -m 4 --warehouse-dir /user/hive/warehouse/db_test2_title --split-by title
 
-
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true --table cp_titles_date --connect jdbc:mysql://database/employees --username root --password secret -m 4 --warehouse-dir /user/hive/warehouse/db_test2_date --split-by to_daterg.apache.sqoop.splitter.allow_text_splitter=true --table cp_titles_date --connect jdbc:mysql://database/employees --username root --password secret -m 4 --warehouse-dir /user/hive/warehouse/db_test2_title --split-by title
+hdfs dfs -count -h /user/hive/warehouse/db_test2_date
+hdfs dfs -ls -h -R /user/hive/warehouse/db_test2_date
 
 
 ```
