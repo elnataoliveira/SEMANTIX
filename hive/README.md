@@ -103,3 +103,53 @@ select * from nascimento where ano = 2017 limit 10;
 select * from nascimento where ano = 2017 limit 10;
 
 ```
+### optimized tables
+``` sh
+
+create table pop_parquet(
+  zip_code int,
+  total_population int,
+  median_age float,
+  total_males int,
+  total_females int,
+  total_households int,
+  average_household_size float
+)
+stored as parquet;
+
+insert into pop_parquet select * from pop;
+
+select count(*) from pop;
+select count(*) from pop_parquet;
+
+select * from pop_parquet limit 10;
+
+create table pop_parquet_snappy(
+  zip_code int,
+  total_population int,
+  median_age float,
+  total_males int,
+  total_females int,
+  total_households int,
+  average_household_size float
+)
+stored as parquet
+tblproperties('parquet.compress'='SNAPPY');
+
+desc formatted pop_parquet_snappy;
+
+insert into pop_parquet_snappy select * from pop;
+
+
+select * from pop_parquet_snappy limit 10;
+
+```
+
+### execute in the namenode
+
+``` sh
+docker exec -it namenode hdfs dfs -ls /user/hive/warehouse/elnataoliveira.db
+docker exec -it namenode hdfs dfs -du /user/hive/warehouse/elnataoliveira.db
+
+
+```
