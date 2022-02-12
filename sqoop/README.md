@@ -33,3 +33,42 @@ sqoop eval --connect jdbc:mysql://database/employees --username root --password 
 sqoop eval --connect jdbc:mysql://database/employees --username root --password secret --query "select * from benefits"
 
 ```
+### impotação
+
+``` sqoop
+
+sqoop import --tables employees --connect jdbc:mysql://database/employees --username root --password secret --warehouse-dir /user/cloudera/db-delete-target-dir
+
+sqoop import --tables employees --connect jdbc:mysql://database/employees --username root --password secret --warehouse-dir /user/cloudera/db-append
+
+sqoop import --tables employees --connect jdbc:mysql://database/employees --username root --password secret --warehouse-dir /user/cloudera/db-append --fields-terminated-by '\t' --lines-terminated-by '&'
+
+
+sqoop eval --connect jdbc:mysql://database/employees --username root --password secret--query "select * from employees limit 10"
+sqoop import --table employees --connect jdbc:mysql://database/employees --username root --password secret --warehouse-dir /user/hive/warehouse/db_test_a
+
+hdfs dfs -ls /user/hive/warehouse/db_test_a
+
+hdfs dfs -ls /user/hive/warehouse/db_test_a
+hdfs dfs -ls /user/hive/warehouse/db_test_a/employees
+hdfs dfs -cat /user/hive/warehouse/db_test_a/employees/part-m-00000 | head -n 10
+
+sqoop import --table employees --connect jdbc:mysql://database/employees --username root --password secret --where "gender='M'" --warehouse-dir /user/hive/warehouse/db_test_b
+
+hdfs dfs -ls /user/hive/warehouse/db_test_b
+hdfs dfs -ls /user/hive/warehouse/db_test_b/employees
+hdfs dfs -cat /user/hive/warehouse/db_test_b/employees/part-m-00000 | head -n 10
+
+sqoop import --table employees --connect jdbc:mysql://database/employees --username root --password secret --columns "first_name, last_name" --fields-terminated-by '\t' --warehouse-dir /user/hive/warehouse/db_test_c
+
+hdfs dfs -ls /user/hive/warehouse/db_test_c
+hdfs dfs -ls /user/hive/warehouse/db_test_c/employees
+hdfs dfs -cat /user/hive/warehouse/db_test_c/employees/part-m-00000 | head -n 10
+
+sqoop import --table employees --connect jdbc:mysql://database/employees --username root --password secret --columns "first_name, last_name" --lines-terminated-by ':' --warehouse-dir /user/hive/warehouse/db_test_c -delete-target-dir
+
+hdfs dfs -ls /user/hive/warehouse/db_test_c
+hdfs dfs -ls /user/hive/warehouse/db_test_c/employees
+hdfs dfs -cat /user/hive/warehouse/db_test_c/employees/part-m-00000 | head -n 10
+
+```
