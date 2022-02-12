@@ -72,3 +72,24 @@ hdfs dfs -ls /user/hive/warehouse/db_test_c/employees
 hdfs dfs -cat /user/hive/warehouse/db_test_c/employees/part-m-00000 | head -n 10
 
 ```
+### paralelismo
+
+``` sqoop
+
+sqoop import --table employees --connect jdbc:mysql://database/employees --username root --password secret --warehouse-dir /user/hive/warehouse/db_test_a
+
+sqoop import --table titles --connect jdbc:mysql://database/employees --username root --password secret -m 8 --as-parquetfile --warehouse-dir /user/hive/warehouse/db_test2_4
+hdfs dfs -ls -h /user/hive/warehouse/db_test2_4/titles
+hdfs dfs -tail /user/hive/warehouse/db_test2_4/titles/08350184-158a-4823-a2eb-7930787f0673.parquet
+
+sqoop import --table titles --connect jdbc:mysql://database/employees --username root --password secret -m 8 --as-parquetfile --warehouse-dir /user/hive/warehouse/db_test2_5 --compress --compression-codec org.apache.hadoop.io.compress.SnappyCodec
+hdfs dfs -ls -h /user/hive/warehouse/db_test2_5
+hdfs dfs -ls -h /user/hive/warehouse/db_test2_5/titles
+hdfs dfs -tail /user/hive/warehouse/db_test2_5/titles/05853b9f-cd69-4352-b548-7d23d96ee56b.parquet
+
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true --table cp_titles_date --connect jdbc:mysql://database/employees --username root --password secret -m 4 --warehouse-dir /user/hive/warehouse/db_test2_title --split-by title
+
+
+
+
+```
