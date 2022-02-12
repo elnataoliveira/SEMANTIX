@@ -5,7 +5,7 @@ docker cp input/exercises-data/db-sql/ database:/
 docker exec -it database bash
 ```
 
-### sql
+### accessing docker database
 ``` sh
 cd /db-sql/
 ```
