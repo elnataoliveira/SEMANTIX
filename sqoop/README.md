@@ -94,4 +94,13 @@ hdfs dfs -count -h /user/hive/warehouse/db_test2_date
 hdfs dfs -ls -h -R /user/hive/warehouse/db_test2_date
 
 
+
+hdfs dfs -cat /user/hive/warehouse/db_test2_date/cp_titles_date/part-m-00000
+| head -n 10
+hdfs dfs -cat /user/hive/warehouse/db_test2_date/cp_titles_date/part-m-00001
+| head -n 10
+hdfs dfs -cat /user/hive/warehouse/db_test2_date/cp_titles_date/part-m-00002
+| head -n 10
+
+
 ```
