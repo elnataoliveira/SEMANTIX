@@ -30,3 +30,16 @@ hdfs dfs -stat %o /user/aluno/elnataoliveira/data/alunos.csv
 hdfs dfs -df -h /user/aluno/elnataoliveira/data/
 hdfs dfs -du -h /user/aluno/elnataoliveira/data/
 ```
+#### append and increment
+
+``` sh
+docker exec -it namenode bash
+
+sqoop import --connect jdbc:mysql://database/sakila --username root --password secret --warehouse-dir /user/hive/warehouse/db_test3 -m 1 --table cp_rental_append
+
+sqoop import --connect jdbc:mysql://database/sakila --username root --password secret --warehouse-dir /user/hive/warehouse/db_test3 -m 1 --table cp_rental_id
+
+hdfs dfs -ls -h -R /user/hive/warehouse/db_test3
+
+hdfs dfs -tail /user/hive/warehouse/db_test3/cp_rental_append/part-m-00000
+```
