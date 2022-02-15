@@ -32,5 +32,10 @@ create table cp_rental_append select rental_id, rental_date from rental;
 
 create table cp_rental_id select select * from cp_rental_append;
 
+docker exec -it database bash
+cd /db-sql/sakila/
+cat insert_rental.sql
+
+mysql -psecret < insert_rental.sql
 
 ```
