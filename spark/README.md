@@ -1,4 +1,12 @@
 ### basic commands
+
+### sending file from namenode
+
+``` sh
+docker exec -it namenode hdfs dfs -put /input/exercises-data/juros_selic /user/aluno/elnataoliveira/data
+docker exec -it namenode hdfs dfs -ls /user/aluno/elnataoliveira/data
+```
+
 - access container docker spark
 
 ``` sh
