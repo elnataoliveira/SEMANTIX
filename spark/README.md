@@ -30,9 +30,22 @@ val jurosHiveDF = spark.read.table("elnataoliveira.tab_juros_selic")
 jurosHiveDF.printSchema
 jurosHiveDF.show(5)
 jurosHiveDF.write.save("/user/aluno/elnataoliveira/data/save_juros")
- val jurosHDFS = spark.read.load("/user/aluno/elnataoliveira/data/save_juros")
-  val jurosHDFS = spark.read.load("/user/aluno/elnataoliveira/data/save_juros")
-  jurosHDFS.printSchema
+val jurosHDFS = spark.read.load("/user/aluno/elnataoliveira/data/save_juros")
+val jurosHDFS = spark.read.load("/user/aluno/elnataoliveira/data/save_juros")
+jurosHDFS.printSchema
+val alunosDF = spark.read.csv("/user/aluno/elnataoliveira/data/alunos.csv")
+alunosDF.printSchema
+val alunosDF = spark.read.option("header", "true").csv("/user/aluno/elnataoliveira/data/alunos.csv")
+alunosDF.show(3)
+
+val alunosDF = spark.read.option("header", "trueval alunos_cursosDF = alunosDF.join(cursosDF, "id_curso")
+
+val alunos_cursosDF = alunosDF.join(cursosDF, "id_curso")
+
+alunos_cursosDF.show(10)
+
+alunos_cursosDF.count
+
    jurosHDFS.show(5)
    
  
