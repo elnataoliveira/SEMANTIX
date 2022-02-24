@@ -129,3 +129,22 @@ oduto.findOne({}){ "_id" : 1, "nome" : "cpu i5", "qntd" : "15" }
 > db.produto.find({"descricao.so": {$in: ["Windows", "windows 10"]}})
 { "_id" : 3, "nome" : "mouse", "qntd" : "50", "descricao" : { "conexao" : "USB", "so" : [ "Windows", "Mac", "Linux" ] } }
 ```
+### update
+
+``` mongo
+
+db.produto.updateOne({_id:1},{$set:{qntd:25}})
+db.produto.updateOne({qntd:{$gt:27}},{$set:{qntd:"30"}})
+db.produto.updateMany({_id:1},{$unset:{qntd:""}})
+db.produto.updateMany({},{$rename:{"nome":"nome_completo"}})
+
+db.test.insertOne({
+ts: new Timestamp(),
+date: new Date(),
+data_string: Date(),
+config_date: new Date("2020-08")
+})
+
+db.produto.updateMany({qntd:{$gt: 10}},{$set:{so:"linux"}, $currentDate:{atualizado:{$type:"timestamp"}}})
+
+```
