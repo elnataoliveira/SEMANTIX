@@ -1,2 +1,2 @@
 # data-engineer-semantix
-bootcamp data engineer semantix academy
+Bootcamp data engineer semantix academy
