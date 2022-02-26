@@ -147,4 +147,17 @@ config_date: new Date("2020-08")
 
 db.produto.updateMany({qntd:{$gt: 10}},{$set:{so:"linux"}, $currentDate:{atualizado:{$type:"timestamp"}}})
 
+> db.produto.find({qntd:{$regex: "[a-z]"}})
+> db.produto.find({"descricao.sistema":/Windows/})
+{ "_id" : 3, "nome" : "mouse", "qntd" : 30, "descricao" : { "conexao" : "USB 3.0", "sistema" : [ "Windows 10", "Mac", "Linux" ] }, "data_modificacao" : Timestamp(1645743153, 1), "ts_modificacao" : Timestamp(1645743509, 1) }
+{ "_id" : 4, "nome" : "hd externo", "qntd" : 20, "descricao" : { "conexao" : "USB 3.0", "sistema" : [ "Windows 10", "Windows 8", "windows 7", "Linux" ] }, "data_modificacao" : { "$type" : ISODate("2022-02-24T23:29:07.356Z") } }
+>
+> db.produto.find({"descricao.armazenamento":{$regex: "gb^", $options: "i"}},{descricao:0, data_modificacao:0})
+> db.produto.find({"descricao.armazenamento":{$regex: /gb/, $options: "i"}},{descricao:0, data_modificacao:0})
+{ "_id" : 2, "nome" : "memória ram", "qntd" : 10 }
+> db.produto.find({"descricao.armazenamento":{$regex: /gb/i}})
+{ "_id" : 2, "nome" : "memória ram", "qntd" : 10, "descricao" : { "armazenamento" : "8GB", "tipo" : "DDR4" } }
+> db.produto.find({qntd:{$regex: /[a-z]/}})
+> db.produto.find({"descricao.sistema":/^Windows$/})
+
 ```
