@@ -1,5 +1,4 @@
-{
-    "user": [{
+[{
             "avatar": "https://images.chesscomfiles.com/uploads/v1/user/18800602.e26b721f.200x200o.e738019a328a.jpeg",
             "player_id": 18800602,
             "@id": "https://api.chess.com/pub/player/123lt",
@@ -18857,5 +18856,5 @@
             "status": "premium",
             "is_streamer": false
         }
-    ]
-}
+]
+
