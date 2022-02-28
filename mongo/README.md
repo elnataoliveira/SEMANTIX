@@ -161,3 +161,11 @@ db.produto.updateMany({qntd:{$gt: 10}},{$set:{so:"linux"}, $currentDate:{atualiz
 > db.produto.find({"descricao.sistema":/^Windows$/})
 
 ```
+### agregações
+
+``` 
+db.alunos.aggregate({$group:{ _id: "$ano_ingresso", nivel_por_ano: {$addToSet: "$nivel"}}})
+db.alunos.aggregate({$group:{ _id: "$id_curso", qntd_curso: {$sum: 1}}})
+
+
+```
