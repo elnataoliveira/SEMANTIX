@@ -1,3 +1,3 @@
 # SEMANTIX
 
-## Bootcamps - Semantix
+## Bootcamps Big Data - Semantix
